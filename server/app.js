@@ -1,8 +1,17 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const schema = require('./schema/schema')
+const schema = require('./schema/schema');
+const mongoose = require('mongoose');
 
 const app = express();
+
+// Connect to mlab Database
+
+ mongoose.connect('mongodb+srv://justinohallo:test1234@gqlninga-bkikw.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true })
+
+ mongoose.connection.once('open', ()=> {
+     console.log('Connected to database')
+ })
 
 app.use('/graphql', graphqlHTTP({
     schema,
