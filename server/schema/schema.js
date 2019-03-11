@@ -19,8 +19,7 @@ const BookType = new GraphQLObjectType({
             genre: {type: GraphQLString},
             author: {
                 type:AuthorType, 
-                resolve(parent, args){
-                    console.log(parent);
+                resolve(parent, args){;
                    // return _.find(authors, {id:parent.authorId})
                    return Author.findById(parent.authorId)
                 }
@@ -38,7 +37,7 @@ const AuthorType = new GraphQLObjectType({
             type: new GraphQLList(BookType),
             resolve(parent, args){
                 //return _.filter(books, {authorId: parent.id})
-                return Books.find({
+                return Book.find({
                     authorId: parent.id
                 })
             }
