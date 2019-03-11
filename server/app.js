@@ -13,6 +13,8 @@ const app = express();
      console.log('Connected to database')
  })
 
+ 
+
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql:true
